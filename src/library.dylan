@@ -9,15 +9,19 @@ define library gmp-numbers
 end library;
 
 define module gmp-integer
-  use common-dylan;
+  use common-dylan, exclude: { format-to-string };
   use c-ffi;
+  use format;
+  use print;
   
   export
-    <mpz-type>,
-    mpz-init,
-    mpz-set-str,
-    mpz-init-set-str,
-    mpz-get-str;
+    <gmp-integer>,
+    make-integer,
+    destroy-integer,
+    number,
+    number-setter,
+    base,
+    base-setter;
 end module;
 
 define module gmp-test

@@ -1,17 +1,21 @@
 module: gmp-test
 
-define constant $test-bignum :: <string>
-  = as(<C-char*>, "1234567891234567891234567891234567890");
+define function factorial (n) => (n!)
+  local method factorial (n, result) => (n!)
+	  if (zero?(n))
+	    result
+	  else
+	    factorial(n - 1, result * n)
+	  end if
+	end method factorial;
 
-define function integer-test () => ()
-  let a :: <mpz-type> = make(<mpz-type>);
-  mpz-init(a);
-  mpz-set-str(a, $test-bignum, 10);
-  format-out("%s\n", mpz-get-str(null-pointer(<C-char*>), 10, a));
-end function integer-test;
+  factorial(n, 1)
+end function factorial;
 
-define function main () => ()
-  integer-test();
+define function main (args :: <vector>) => ()
+  if (args.size > 0)
+    format-out("%=\n", factorial(make-integer(args[0])));
+  end if;
 end function main;
 
-main();
+main(application-arguments());

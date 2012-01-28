@@ -1,0 +1,28 @@
+gmp-numbers is a wrapper around the GNU multiple precision arithmetic library
+(GMP) for (Open) Dylan.
+
+The library is called gmp-numbers and currently exports the following modules:
+
+    gmp-integer.
+
+For more information about GMP, take a look at http://gmplib.org.
+
+gmp-integer:
+---
+
+To create an instance of <gmp-integer>, you use make-integer() which
+gets either an <integer> or an <string> and will allocate everything
+for you automatically.
+
+The following operations are currently implemented:
+
+    +
+    -
+    *
+    <
+    >
+    =
+    <=
+    >=
+    abs
+    zero?.
