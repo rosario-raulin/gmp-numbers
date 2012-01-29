@@ -109,9 +109,8 @@ define method \=
 end method \=;
 
 define method abs (x :: <gmp-integer>) => (abs-value :: <gmp-integer>)
-  let abs-value :: <mpz-type> = make(<mpz-type>);
-  mpz-abs(abs-value, number(x));
-  make(<gmp-integer>, number: abs-value, base: base(x))
+  gmp-integer-arithmetic
+  (method (res, op, ignore) mpz-abs(res, op) end, number(x), #f);
 end method abs;
 
 define method zero? (x :: <gmp-integer>) => (zero-p :: <boolean>);

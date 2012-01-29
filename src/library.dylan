@@ -21,7 +21,8 @@ define module gmp-integer
     number,
     number-setter,
     base,
-    base-setter;
+    base-setter,
+    with-integer;
 end module;
 
 define module gmp-test
