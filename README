@@ -11,7 +11,7 @@ gmp-integer:
 ---
 
 To create an instance of <gmp-integer>, you use make-integer() which
-gets either an <integer> or an <string> and will allocate everything
+gets either an <integer> or a <string> and will allocate everything
 for you automatically.
 
 The following operations are currently implemented:
@@ -26,3 +26,14 @@ The following operations are currently implemented:
     >=
     abs
     zero?.
+
+There's also a with-integer macro that you call like this:
+
+	with-integer(num = "25")
+	  format-out("%=\n", num + num);
+	end with-integer;
+
+The reason this macro exists is that <gmp-integer>s need to be deallocated
+manually by calling destroy-integer() on them. This macro does the job for you
+automatically even if something bad happens (like the occurrence of an 
+exception).
