@@ -5,18 +5,6 @@ define constant <unsigned-integer> = limited(<integer>, min: 0);
 define C-subtype <mpz-type> (<C-void*>)
 end C-subtype <mpz-type>;
 
-define C-function mpz-init
-  parameter integer :: <mpz-type>;
-  c-name: "__gmpz_init";
-end C-function mpz-init;
-
-define C-function mpz-set-str
-  parameter integer :: <mpz-type>;
-  parameter str :: <C-string>;
-  parameter base :: <C-int>;
-  c-name: "__gmpz_set_str";
-end C-function mpz-set-str;
-
 define C-function mpz-init-set-str
   parameter integer :: <mpz-type>;
   parameter str :: <C-string>;

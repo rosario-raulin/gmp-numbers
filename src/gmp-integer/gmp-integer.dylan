@@ -103,29 +103,14 @@ define method \<
   mpz-cmp(number(a), number(b)) < 0
 end method \<;
 
-define method \>
-    (a :: <gmp-integer>, b :: <gmp-integer>) => (cmp-result :: <boolean>)
-  mpz-cmp(number(a), number(b)) > 0
-end method \>;
-
 define method \=
     (a :: <gmp-integer>, b :: <gmp-integer>) => (cmp-result :: <boolean>)
   mpz-cmp(number(a), number(b)) == 0
 end method \=;
 
-define method \<=
-    (a :: <gmp-integer>, b :: <gmp-integer>) => (cmp-result :: <boolean>)
-  mpz-cmp(number(a), number(b)) <= 0
-end method \<=;
-
-define method \>=
-    (a :: <gmp-integer>, b :: <gmp-integer>) => (cmp-result :: <boolean>)
-  mpz-cmp(number(a), number(b)) >= 0
-end method \>=;
-
 define method abs (x :: <gmp-integer>) => (abs-value :: <gmp-integer>)
   let abs-value :: <mpz-type> = make(<mpz-type>);
-  mpz-abs(abs-value, x);
+  mpz-abs(abs-value, number(x));
   make(<gmp-integer>, number: abs-value, base: base(x))
 end method abs;
 
