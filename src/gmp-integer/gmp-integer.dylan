@@ -108,6 +108,11 @@ define method \/ (op1 :: <gmp-integer>, op2 :: <gmp-integer>)
          make(<gmp-integer>, number: rem, base: base(op1)))
 end method \/;
 
+define method \^
+    (base :: <gmp-integer>, exp :: <integer>) => (res :: <gmp-integer>)
+  gmp-integer-arithmetic(mpz-pow-ui, number(base), exp)
+end method \^;
+
 define method \<
     (a :: <gmp-integer>, b :: <gmp-integer>) => (cmp-result :: <boolean>)
   mpz-cmp(number(a), number(b)) < 0
@@ -119,10 +124,16 @@ define method \=
 end method \=;
 
 define method abs (x :: <gmp-integer>) => (abs-value :: <gmp-integer>)
-  gmp-integer-arithmetic
-  (method (res, op, ignore) mpz-abs(res, op) end, number(x), #f);
+  gmp-integer-arithmetic(method (res, op, ignore) mpz-abs(res, op) end,
+                          number(x), #f, base: base(x));
 end method abs;
 
 define method zero? (x :: <gmp-integer>) => (zero-p :: <boolean>);
   mpz-cmp-ui(number(x), 0) = 0
 end method zero?;
+
+define method negative (num :: <gmp-integer>) => (neg-num :: <gmp-integer>)
+  gmp-integer-arithmetic(method (res, op, ignore) mpz-neg(res, op) end,
+                         number(num), #f, base: base(num))
+end method negative;
+

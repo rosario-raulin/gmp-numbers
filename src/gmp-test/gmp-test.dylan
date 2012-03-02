@@ -28,8 +28,11 @@ define function main (args :: <vector>) => ()
       format-out("%=\n", a < b);
       format-out("%=\n", a >= b);
       let(quo, rem) = a / b;
-      format-out("quotient:\t%=\n", quo);
-      format-out("rem:\t%=\n", rem);
+      format-out("quotient: %=\n", quo);
+      format-out("rem: %=\n", rem);
+      let neg = negative(a);
+      format-out("neg: %=\n", neg);
+      format-out("exp: %=\n", neg ^ 5);
     end with-integer;
   end with-integer;
 end function main;

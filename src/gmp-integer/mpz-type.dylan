@@ -90,11 +90,24 @@ define C-function mpz-tdiv-qr
   c-name: "__gmpz_tdiv_qr";
 end C-function mpz-tdiv-qr;
 
+define C-function mpz-pow-ui
+  parameter res :: <mpz-type>;
+  parameter base :: <mpz-type>;
+  parameter exp :: <C-unsigned-int>;
+  c-name: "__gmpz_pow_ui";
+end C-function mpz-pow-ui;
+
 define C-function mpz-abs
   parameter abs-value :: <mpz-type>;
   parameter op :: <mpz-type>;
   c-name: "__gmpz_abs";
 end C-function mpz-abs;
+
+define C-function mpz-neg
+  parameter res :: <mpz-type>;
+  parameter op :: <mpz-type>;
+  c-name: "__gmpz_neg";
+end C-function mpz-neg;
 
 define C-function mpz-cmp
   parameter op1 :: <mpz-type>;

@@ -19,13 +19,16 @@ The following operations are currently implemented:
     +
     -
     *
+    /
+    ^
     <
     >
     =
     <=
     >=
     abs
-    zero?.
+    zero?
+    negative.
 
 There's also a with-integer macro that you call like this:
 
