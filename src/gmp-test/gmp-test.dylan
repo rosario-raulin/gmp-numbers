@@ -27,6 +27,9 @@ define function main (args :: <vector>) => ()
       format-out("%=\n", abs(a));
       format-out("%=\n", a < b);
       format-out("%=\n", a >= b);
+      let(quo, rem) = a / b;
+      format-out("quotient:\t%=\n", quo);
+      format-out("rem:\t%=\n", rem);
     end with-integer;
   end with-integer;
 end function main;

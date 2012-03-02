@@ -98,6 +98,16 @@ define method \*
   b * a
 end method \*;
 
+define method \/ (op1 :: <gmp-integer>, op2 :: <gmp-integer>)
+ => (quotient :: <gmp-integer>, remainder :: <gmp-integer>)
+  let quo :: <mpz-type> = make(<mpz-type>);
+  let rem :: <mpz-type> = make(<mpz-type>);
+  
+  mpz-tdiv-qr(quo, rem, number(op1), number(op2));
+  values(make(<gmp-integer>, number: quo, base: base(op1)),
+         make(<gmp-integer>, number: rem, base: base(op1)))
+end method \/;
+
 define method \<
     (a :: <gmp-integer>, b :: <gmp-integer>) => (cmp-result :: <boolean>)
   mpz-cmp(number(a), number(b)) < 0
@@ -105,7 +115,7 @@ end method \<;
 
 define method \=
     (a :: <gmp-integer>, b :: <gmp-integer>) => (cmp-result :: <boolean>)
-  mpz-cmp(number(a), number(b)) == 0
+  mpz-cmp(number(a), number(b)) = 0
 end method \=;
 
 define method abs (x :: <gmp-integer>) => (abs-value :: <gmp-integer>)
@@ -114,5 +124,5 @@ define method abs (x :: <gmp-integer>) => (abs-value :: <gmp-integer>)
 end method abs;
 
 define method zero? (x :: <gmp-integer>) => (zero-p :: <boolean>);
-  mpz-cmp-ui(number(x), 0) == 0
+  mpz-cmp-ui(number(x), 0) = 0
 end method zero?;

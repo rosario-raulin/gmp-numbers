@@ -82,6 +82,14 @@ define C-function mpz-mul-ui
   c-name: "__gmpz_mul_ui";
 end C-function mpz-mul-ui;
 
+define C-function mpz-tdiv-qr
+  parameter quotient :: <mpz-type>;
+  parameter remainder :: <mpz-type>;
+  parameter op1 :: <mpz-type>;
+  parameter op2 :: <mpz-type>;
+  c-name: "__gmpz_tdiv_qr";
+end C-function mpz-tdiv-qr;
+
 define C-function mpz-abs
   parameter abs-value :: <mpz-type>;
   parameter op :: <mpz-type>;
